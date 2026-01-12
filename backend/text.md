@@ -1,0 +1,4 @@
+- npm init -y
+- npm i express nodemon dotenv
+- npm i cookie-parser
+- npm i cors
