@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    user_name: { type: String, unique: true },
-    phone_number: {
+    userName: { type: String, unique: true },
+    phoneNumber: {
         type: String,
         unique: true,
         sparse: true
     },
-    phone_prefix: {
+    phonePrefix: {
         type: String,
         unique: false,
     },
@@ -21,15 +21,15 @@ const userSchema = new mongoose.Schema({
             "Please fill a valid email address",
         ],
     },
-    email_otp: { type: String },
-    email_otp_expiry: { type: Date },
+    emailOtp: { type: String },
+    emailOtpExpiry: { type: Date },
 
-    profile_picture: { type: String },
+    profilePicture: { type: String },
     about: { type: String },
-    last_seen: { type: Date },
+    lastSeen: { type: Date },
 
-    is_online: { type: Boolean, default:false },
-    is_verified: { type: Boolean, default:false },
+    isOnline: { type: Boolean, default:false },
+    isVerified: { type: Boolean, default:false },
     agreed: { type: Boolean, default:false },
 
 
