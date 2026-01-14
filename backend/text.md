@@ -2,4 +2,7 @@
 - npm i express nodemon dotenv
 - npm i cookie-parser
 - npm i cors
+- 
 - npm i twilio
+- npm install nodemailer
+- npm i jsonwebtoken
