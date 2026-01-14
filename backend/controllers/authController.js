@@ -2,6 +2,7 @@ const User = require("../models/User");
 const { sendOtpToEmail } = require("../services/emailService");
 // const { sendOtpToPhone } = require("../services/twilioService");
 const twilioService = require("../services/twilioService");
+const generateJsonWebToken = require("../utils/generateJsonWebToken");
 const generateOTP = require("../utils/otpGenerator");
 const response = require("../utils/responseHandler");
 
@@ -15,7 +16,8 @@ const sendOtp = async (req, res) => {
     try {
         // Send OTP to user with email
         if (email) {
-            const user = await User.findOne({ email: email.toLowerCase() });
+            // return response(res, 400, "Sending OTP via email is currently disabled");
+            let user = await User.findOne({ email: email.toLowerCase() });
             if (!user) {
                 user = new User({ email: email.toLowerCase() });
             }
@@ -109,7 +111,7 @@ const verifyOtp = async (req, res) => {
 
         const token = generateJsonWebToken({ user_id: user?._id });
 
-        res.cookie.set("auth_token", token, {
+        res.cookie("auth_token", token, {
             httpOnly: true, // Prevents client-side JavaScript from accessing the cookie || XSS attack থেকে safe || Browser শুধু HTTP request-এর সাথে পাঠাবে
             maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
             secure: process.env.NODE_ENV === "production", // Ensures the cookie is only sent over HTTPS in production
@@ -125,3 +127,5 @@ const verifyOtp = async (req, res) => {
     }
 
 }
+
+module.exports = { sendOtp, verifyOtp };

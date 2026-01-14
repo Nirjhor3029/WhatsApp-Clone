@@ -46,7 +46,7 @@ transporter.verify((error, success) => {
 const sendOtpToEmail = async (toEmail, otp) => {
     const html = `
         <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
-        <h2 style="color: #075e54;">ðŸ” WhatsApp Web Verification</h2>
+        <h2 style="color: #075e54;">🔐 WhatsApp Web Verification</h2>
         
         <p>Hi there,</p>
         
@@ -58,7 +58,7 @@ const sendOtpToEmail = async (toEmail, otp) => {
 
         <p><strong>This OTP is valid for the next 5 minutes.</strong> Please do not share this code with anyone.</p>
 
-        <p>If you didnâ€™t request this OTP, please ignore this email.</p>
+        <p>If you didn't request this OTP, please ignore this email.</p>
 
         <p style="margin-top: 20px;">Thanks & Regards,<br/>WhatsApp Web Security Team</p>
 
